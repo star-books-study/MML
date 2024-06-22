@@ -49,7 +49,7 @@ MML을 이해하기 위한 두 가지 전략
 - 목표: 새로운 데이터에도 잘 작동하는 예측기(predictor) 구축
 
 ### 9장 : 선형 회귀 (linear regression)
-  - $$\text{입력 } x \in \mathbb{R}^D \text{를 관찰된 값 } y \in \mathbb{R} \text{로 매핑하는 함수 찾기}$$
+  - 입력 $x \in \mathbb{R}^D$ 를 관찰된 값 $y \in \mathbb{R}$ 로 매핑하는 함수 찾기
 - 최대 우도 추정(maximum likelihood estimation), 최대 사후 확률 추정(maximum a posteriori estimation), 베이지안 선형 회귀(Bayesian linear regression) 논의
 
 ### 10장: 차원 축소 (demensionality reduction)
