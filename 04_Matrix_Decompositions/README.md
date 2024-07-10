@@ -6,7 +6,7 @@
 
 ### Determinant
 - `Determinant`(행렬식)는 선형대수에서 중요한 개념
-- Determinant는 선형대수에서의 a methematical object in the analysis and solution of systems
+- Determinant는 선형대수에서의 해석 및 시스템 해법에 사용되는 수학적 객체
 - Determinant는 오직 같은 수의 행과 열이 있는 정방행렬(square matrix, $A \in \mathbb{R}^2$)에서만 정의된다.
 - square matrix $A$의 determinant는 A를 실수(real number)로 mapping하는 함수이고, 아래와 같이 표현한다.
 
