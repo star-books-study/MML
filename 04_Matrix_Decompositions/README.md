@@ -255,3 +255,77 @@ $$
 - $\boldsymbol{A}^\top\boldsymbol{A}$의 고윳값과 고유벡터를 통해 $\boldsymbol{V}$와 $\Sigma$를 구한다
 - $\boldsymbol{AA}^\top$의 고윳값과 고유벡터를 통해 $\boldsymbol{U}$를 구한다
 - $\boldsymbol{A}$의 특잇값은 $\boldsymbol{A}^\top\boldsymbol{A}$와 $\boldsymbol{AA}^\top$의 양의 고윳값의 제곱근이다
+
+
+## 4.6 Matrix Approximation
+
+이번 장에서는 Full SVD factorization을 수행하는 대신, 행렬 $\boldsymbol{A}$ 를 더 간단한(low-rank) 행렬 $\boldsymbol{A}_i$ 들의 합으로 SVD를 나타내는 것에 대해 살펴본다.
+
+### Low-Rank Approximation
+- 행렬 $\boldsymbol{A}$ 를 더 간단한(low-rank) 행렬 $\boldsymbol{A}_i$ 들의 합으로 나타낼 수 있다. 이는 연산량이 적은 matrix approximation이다.
+
+#### Rank-1 행렬
+$$\boldsymbol{A}_i := \boldsymbol{u}_i\boldsymbol{v}_i^\top \tag{4.90}$$
+
+이는 $\boldsymbol{U}$ 와 $\boldsymbol{V}$ 의 i번째 orthogonal column vector의 외적(outer product)이다.
+
+#### Rank-r 행렬
+Rank $r$ 의 행렬 $\boldsymbol{A}$ 는 rank-1 행렬 $\boldsymbol{A}_i$ 의 합으로 다음과 같이 나타낼 수 있다.
+
+$$\boldsymbol{A} = \sum_{i=1}^r \sigma_i\boldsymbol{u}_i\boldsymbol{v}_i^\top = \sum_{i=1}^r\sigma_i\boldsymbol{A}_i \tag{4.91}$$
+
+만약 중간값 $k < r$ 까지 더해지면, $\boldsymbol{A}$ 의 rank-$k$ approximation을 얻게 된다.
+
+$$\hat{\boldsymbol{A}}(k) := \sum_{i=1}^k\sigma_i\boldsymbol{u}_i\boldsymbol{v}_i^\top = \sum_{i=1}^k\sigma_i\boldsymbol{A}_i \tag{4.92}$$
+
+이때, $\text{rk}(\hat{\boldsymbol{A}}(k)) = k$ 이다.
+
+### Norm과 Spectral Norm
+행렬의 차이(error)를 측정하려면 norm의 개념이 필요하다. 행렬 $\boldsymbol{A} \in \mathbb{R}^{m \times n}$ 의 spectral norm은 다음과 같이 정의된다.
+
+$$\|\boldsymbol{A}\|_2 := \max_x \frac{\|\boldsymbol{Ax}\|_2}{\|x\|_2} \tag{4.93}$$
+
+$\boldsymbol{A}$ 의 spectral norm은 $\boldsymbol{A}$ 의 가장 큰 singular value $\sigma_1$ 이다.
+
+### Eckart-Young Theorem
+Rank-$r$ 인 행렬 $\boldsymbol{A} \in \mathbb{R}^{m \times n}$ 과 rank-$k$ 인 행렬 $\boldsymbol{B} \in \mathbb{R}^{m \times n}$ 이 있고 $k \leq r$ 일 때, 다음의 식이 성립한다.
+
+$$\hat{\boldsymbol{A}}(k) = \arg\min_{\text{rk}(B)=k} \|\boldsymbol{A} - \boldsymbol{B}\|_2 \tag{4.94}$$
+
+$$\boldsymbol{A}-\hat{\boldsymbol{A}}(k)\|_2 = \sigma_{k+1} \tag{4.95}$$
+
+이는 rank-$k$ approximation을 사용하여 $\boldsymbol{A}$ 를 근사했을 때, 발생하는 error를 나타낸다.
+
+### Low-Rank Approximation의 응용
+- Image Processing
+- Noise Filtering
+- Regularization of Ill-posed Problems
+- Dimensionality Reduction
+- Principal Component Analysis (PCA)
+
+### Example 4.15: Movie Ratings
+Example 4.14에서의 movie-rating matrix를 low-rank approximation을 사용하여 근사한다. 첫 번째 singular value term을 사용하여 predicated ratings를 얻을 수 있다.
+#### Rank-1 Approximation
+
+$$
+\boldsymbol{A}_1 & = \boldsymbol{u}_1\boldsymbol{v}_1^\top = \begin{bmatrix}-0.6710\\-0.7197\\-0.0939\\-0.1515\end{bmatrix}\begin{bmatrix}-0.7367&-0.6515&-0.1811\end{bmatrix} \\ 
+& = \begin{bmatrix}0.4943&0.4372&0.1215\\0.5302&0.4689&0.1303\\0.0692&0.0612&0.0170\\0.1116&0.0987&0.0274\end{bmatrix}
+$$
+#### Rank-1 Approximation
+
+
+<img width="490" alt="image" src="https://github.com/star-books-coffee/MML/assets/101961939/e32b5ec9-3d95-4243-94f1-0a10246b0379">
+
+
+
+#### Combined Rank-2 Approximation
+
+<img width="512" alt="image" src="https://github.com/star-books-coffee/MML/assets/101961939/83495359-55a2-4541-916c-fd3604be1268">
+
+이 결과는 original ratings 테이블과 유사하다.
+
+<img width="125" alt="image" src="https://github.com/star-books-coffee/MML/assets/101961939/83901abd-f6c1-4dcc-bfb4-2688d2bb2498">
+
+
+### 결론
+low-rank approximation을 통해 데이터 테이블의 중요한 정보를 유지하면서 차원을 줄일 수 있다. 이는 머신러닝에서 다양한 응용 분야에 활용될 수 있다.
