@@ -199,7 +199,7 @@ $$
 
 #### Difinition 4.19 Diagonalizable
 - Matrix $A\in R_{nxn}$이 대각행렬과 similar하다면, 즉 $D= P^{-1} AP$를 만족시키는 역행렬이 존재하는 행렬 $P$가 존재한다면, 행렬 A를 diagonalizable, 즉 대각화가 가능하다고 말한다.
-- $A \in R^{nxn}$이 있고, $\lambda_1, ..., \lambda_n$은 스칼라들의 집합 $p_1, ..., p_n$은 $R^{nxn}$에서의 벡터 집합이라 하자. 그리고 $P := [p_1, ... p_n]$을 정의하고, $D \in R^{nxn}$을 대각 요소들이 $\lambda_1, ..., \lambda_n$인 대각행렬이라고 정의합니다.
+- $A \in R^{nxn}$이 있고, $\lambda_1, ..., \lambda_n$은 스칼라들의 집합 $p_1, ..., p_n$은 $R^{nxn}$에서의 벡터 집합이라 하자. 그리고 $P := [p_1, ... p_n]$을 정의하고, $D \in R^{nxn}$을 대각 요소들이 $\lambda_1, ..., \lambda_n$인 대각행렬이라고 정의한다.
 - 그러면 만약  $\lambda_1, ..., \lambda_n$이 A의 eigenvalule이고, $p_1, ... p_n$이 A의 eigenvector일 때 다음 식이 만족함을 볼 수 있다.
 
   $$AP = PD$$
