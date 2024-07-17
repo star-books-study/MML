@@ -14,6 +14,7 @@
 - 테일러 급수(Taylor's series)를 이용하면, 복잡하거나 우리가 잘 모르는 함수를 다항함수(polynomial function)로 대체 할 수 있다.
 
 - 어떤 함수에 대해서 $x = x_0$에 대해 계속적으로 미분 가능한 경우, $x=x_0$의 근처에서 아래의 관계식의 좌변과 우변이 근사하게 된다.
+  
   <img width="555" alt="스크린샷 2024-07-15 오후 9 25 52" src="https://github.com/user-attachments/assets/5e312095-4700-412d-9453-95c0d9ff7671">
 
 - 테일러 급수에서 주의해야 할 사항은 좌변과 우변이 모든 $x$에 대해서 같은 것이 아니라, **$x = x_0$ 근처에서만 성립**한다는 점
@@ -24,6 +25,7 @@
 
 #### Definition 5.3 Taylor Polynomial (테일러 다항식)
 - f가 n번까지 미분 가능한 함수라고 하자. 이 때 정수 n이 0에서 n까지의 임의의 정수라고 할 때, $x=x_0$에서 $f$에 의해 발생하는 n차 테일러 다항식은 아래와 같이 정의할 수 있다.
+  
  <img width="511" alt="스크린샷 2024-07-17 오후 2 28 16" src="https://github.com/user-attachments/assets/87347e75-a1ac-4aa6-8ac2-35b2a744caff">
 
 
@@ -37,7 +39,10 @@
 <img width="579" alt="스크린샷 2024-07-17 오전 9 46 47" src="https://github.com/user-attachments/assets/a26f927b-0c0a-4e7b-a375-5fca7c988386">
 
 - $f(x) = sin(x) + cos(x) \in C^{\infty}, x_0$에서의 테일러 급수
+
   <img width="341" alt="스크린샷 2024-07-17 오전 9 47 04" src="https://github.com/user-attachments/assets/29e7cb5e-bf41-4643-9662-b1c6d1c9931e">
+
+
   - $k$번의 미분으로 얻은 polynomial을 approximation하는 그래프들은 **차수를 높일수록** 특정 x에 대하여 설명을 잘하게 된다. 
 
 ### 5.1.2 Differentiation Rules (미분법)
