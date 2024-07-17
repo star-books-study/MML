@@ -4,14 +4,6 @@
 - 이 gradient는 **미분**을 통해 쉽게 얻을 수 있다. 벡터, 행렬의 미분으로 가면 복잡해지지만 다항식에 대한 미분은 어렵지 않게 구할 수 있다.
 
 
-<img width="548" alt="스크린샷 2024-07-17 오전 9 24 39" src="https://github.com/user-attachments/assets/99752a23-cda0-44f6-bd11-172ec8449e7f">
-
-- (a)와 같은 경우는 + 모양의 관측치를 잘 설명해줄 수 있는 최적의 그래프를 구해주어야 한다. 이러한 함수를 `likelyhood`라는 함수로 정의하고, 이를 최대화하는 과정을 겪어서 파란색 선과 같은 최적의 curve를 가지게 된다.
-- (b)와 같은 경우는 여러 개의 가우시안 혼합 모형으로 밀도를 추정하게 되는데, 여기서도 얼마나 데이터를 잘 설명하는가를 측정할 수 있는 `likelyhood`를 정의하고 이를 최대화하는 mean과 covariance를 측정하게 된다.
-
-
-- 이러한 최적화 과정에서 목적함수의 gradient를 찾아 나서야 한다.
-
 ## 5.1 Differentiation of Univariate Functions (일변수 함수의 미분)
 - 이번 장에서는 머신러닝에서 미지수가 하나인 univariate function에 대한 내용을 알아본다.
 
