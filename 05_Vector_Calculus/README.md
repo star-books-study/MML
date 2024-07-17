@@ -18,20 +18,17 @@
 
 - 테일러 급수에서 주의해야 할 사항은 좌변과 우변이 모든 $x$에 대해서 같은 것이 아니라, **$x = x_0$ 근처에서만 성립**한다는 점
 - 즉, $x$가 $x_0$에서 멀어지면 멀어질수록 $f(x) = T_n(x)$로 놓는 것은 큰 오차를 갖게 된다.
-- 한편, 다항식의 차수(n)는 높으면 높을수록 $f$를 좀 더 잘 근사하게 된다.
 
-  ➡️ 결국 $x=a$에서 $f$와 동일한 미분계수를 갖는 어떤 다항함수로 $f$를 근사시키는 것
+  ➡️ 결국 $x=x_0$에서 $f$와 동일한 미분계수를 갖는 어떤 다항함수로 $f$를 근사시키는 것
 - 테일러 급수를 이용해 이와 같이 $x=x_0$에서 미분 계수를 일치시키면 $x=x_0$ 뿐만 아니라 주변의 일정 구간에서도 $f(x)$와 $T_\infty(x)$가 거의 일치되게 된다.
 
 #### Definition 5.3 Taylor Polynomial (테일러 다항식)
+- f가 n번까지 미분 가능한 함수라고 하자. 이 때 정수 n이 0에서 n까지의 임의의 정수라고 할 때, $x=x_0$에서 $f$에 의해 발생하는 n차 테일러 다항식은 아래와 같이 정의할 수 있다.
  <img width="511" alt="스크린샷 2024-07-17 오후 2 28 16" src="https://github.com/user-attachments/assets/87347e75-a1ac-4aa6-8ac2-35b2a744caff">
 
 
 - 위 식에서 $f^{(k)}(x_0)$는 $x_0$에서의 $f$의 k번째 미분 계수이고, $\frac{f^{(k)}(x_0)}{k!}$은 다항식의 계수 (coefficients)이다.
-
-- $f(x) = sin(x) + cos(x) \in C^{\infty}, x_0$에서의 테일러 급수
-  <img width="341" alt="스크린샷 2024-07-17 오전 9 47 04" src="https://github.com/user-attachments/assets/29e7cb5e-bf41-4643-9662-b1c6d1c9931e">
-  - $k$번의 미분으로 얻은 polynomial을 approximation하는 그래프들은 **차수를 높일수록** 특정 x에 대하여 설명을 잘하게 된다. 
+- 다항식의 차수(n)이 커지면 커질수록 테일러 급수에 가까워진다.
 
 #### Example 5.3 Taylor Polynomial
 - 다음 예제는 6번의 미분을 통해 원래 $f(x)$와 같아짐을 보게 된다.
@@ -39,7 +36,11 @@
 
 <img width="579" alt="스크린샷 2024-07-17 오전 9 46 47" src="https://github.com/user-attachments/assets/a26f927b-0c0a-4e7b-a375-5fca7c988386">
 
-### 5.1.2 Differentiation Rules
+- $f(x) = sin(x) + cos(x) \in C^{\infty}, x_0$에서의 테일러 급수
+  <img width="341" alt="스크린샷 2024-07-17 오전 9 47 04" src="https://github.com/user-attachments/assets/29e7cb5e-bf41-4643-9662-b1c6d1c9931e">
+  - $k$번의 미분으로 얻은 polynomial을 approximation하는 그래프들은 **차수를 높일수록** 특정 x에 대하여 설명을 잘하게 된다. 
+
+### 5.1.2 Differentiation Rules (미분법)
 
 - 다음은 기본적인 미분 공식이다.
 
@@ -57,7 +58,7 @@
 
 ## 5.2 Partial Differentiation and Gradients (편미분과 기울기)
 
-- 이제는  multivariate function(다변수 함수)를 대상으로 미분을 한다.
+- 이제는  multivariate variable를 대상으로 미분을 한다.
 - 수학에서, 여러 변수에 대한 함수의 편미분이라는 것은 여러 변수들 중 하나에 대해서 미분하고, 나머지는 상수로 취급하는 것을 의미한다.
 - 여기서 gradient를 구하는 방법은 여러 개의 variable 중 하나씩에 대한 미분을 진행하고 모두 모아주면 된다.
 - 이 모아진 것을 gradient라고 한다.
@@ -91,14 +92,18 @@
 
 
 
-### 5.2.2 Chain Rule
-- 변수가 여러개인 함수에서 gradient를 구하는 과정에서는 추가적인 작업이 필요하다. 이때 chain rule이 필요하다.
-- 변수가 $x_1$과 $x_2$로 두 개일 때, t에 대한 gradient를 구하는 일반식은 다음과 같다.
+### 5.2.2 Chain Rule (연쇄 법칙)
+- 변수가 $x_1$과 $x_2$에 대한 함수 $f$를 생각해보자. 또한 $x_1(t), x_2(t)$는 t에 대한 함수이다.
+- $f$의 $t$에 대한 gradient를 구하는 일반식은 다음과 같다.
 
 <img width="523" alt="image" src="https://github.com/user-attachments/assets/59f4fc57-6cdc-44e2-9834-80336a14dea8">
 
-- gradient를 행렬곱 형태로 표현하면 다음과 같다.
+- 만일 $f$가 $x_1$, $x_2$에 대한 함수이고, $x_1(s,t)$, $x_2(s,t)$가 두 변수 $s$, $t$에 대한 함수라면, 연쇄 법칙은 다음과 같은 편미분 결과를 낸다.
 
+<img width="515" alt="image" src="https://github.com/user-attachments/assets/e9d5589c-58af-4d10-8b9e-b208c9e11ec2">
+
+
+- 그리고 gradient는 행렬곱을 통해 얻어지게 된다.
 <img width="446" alt="image" src="https://github.com/user-attachments/assets/ee8be93f-f030-4b36-a8c1-b59c880e5c72">
 
 - 위에서 색으로 구분한 것과 같이, gradient를 vector 및 matrix 형태로 표현할 때는, 항상 row 방향으로 적어야 한다.
@@ -106,9 +111,11 @@
 
 ## 5.3 Gradients of Vector-Valued Functions (벡터 함수의 기울기)
 - 이전까지 다룬 함수를 n차원에서 1차원으로 mapping 되는 것이었다면,
+  
   $$f : \mathbb{R}^n \rightarrow \mathbb{R}$$
 
 - 이 장에서 다룰 함수는 n차원에서 m차원으로, 즉 더 일반적인 경우에 대한 mapping을 다룬다. (이 때 n >= 1, m > 1을 만족한다.)
+
 
   $$f : \mathbb{R}^n \rightarrow \mathbb{R}^m$$
 
@@ -125,7 +132,7 @@
 
 - 즉, 다음과 같이, partial derivatives를 row 방향으로 결합한 형태로 vector-valued function의 gradient를 구할 수 있다.
 
-- 그리고 위와 같이 $m\times n$ 형태로 주어진 matrix를 Jacobain이라 한다.
+- 그리고 아래와 같이 $m\times n$ 형태로 주어진 matrix를 `Jacobian`이라 한다.
   
   <img width="489" alt="스크린샷 2024-07-17 오후 4 51 31" src="https://github.com/user-attachments/assets/e4a1728b-019d-425d-821b-f427d280a279">
 
@@ -141,26 +148,30 @@
 
 
 
-## 5.4 Gradients of Matrices
-  
-- 이 gradient를 어떻게 구하는지 알아보자.
+## 5.4 Gradients of Matrices (행렬의 기울기)
+
 - multidemensional tensor이기 때문에 output의 dimension과 크기만 신경 쓰면 지금까지 배운 미분 개념에서 크게 벗어나지 않는다.
-- 예를 들어 행렬 $A (m x n)$이 행렬 $B(pxq)$로 미분되면 4 dimensional tensor $J$가 되고, $J_{ijkl}$ 엔트리에는 각각 paritla derivatives 값이 들어간다.
+- 예를 들어 행렬 $A (m \times n)$이 행렬 $B(p \times q)$로 미분되면 4 dimensional tensor $J$가 되고, $J_{ijkl}$ 엔트리에는 각각 paritial derivatives 값이 들어간다.
 - 행렬을 벡터 또는 행렬로 미분했을 때 **output의 shape**를 잘 상기해야 한다.
 
-- A라는 행렬을 $x$ 벡터로 미분했을 때, 최종적으로는 4x2x3의 결과가 되는데, 이 때 각 셀에는 $A$와 $x$의 1 demension 곱으로 표현된다.
+
+<img width="530" alt="스크린샷 2024-07-17 오후 8 42 54" src="https://github.com/user-attachments/assets/ed930bae-b579-4689-acd2-173f68f0e776">
+
+- 이를 편미분 하면 다음과 같다.
+
+<img width="522" alt="image" src="https://github.com/user-attachments/assets/03d5d996-f79c-41a9-987a-d29a214471ae">
+
+- 이를 모아보면 다음과 같은 자코비안을 만들 수 있다.
+
+<img width="528" alt="스크린샷 2024-07-17 오후 8 43 55" src="https://github.com/user-attachments/assets/ec0bd4ab-a823-458b-8c16-9dffad3feaa3">
+
+
+- $A \in \mathbb{R}^{4\times2}$ 행렬을 $x \in \mathbb{R}^3$ 벡터로 미분했을 때, 최종적으로는 4x2x3의 결과가 되는데, 이 때 각 셀에는 $A$와 $x$의 1 demension 곱으로 표현된다.
 - 그림을 통해서는 $A$를 각각 $x_1, x_2, x_3$으로 미분한 partial deriatives들이 있고, 최종적으로 4x2x3 결과가 되는 개념만 파악하자.
 
 <img width="334" alt="스크린샷 2024-07-17 오전 10 25 27" src="https://github.com/user-attachments/assets/8b23a6ac-467e-4712-be24-50d13dfb9bd0">
 
-#### Example 5.12 Gradient of Vectors with Respect to Matrices
-- 위 그림을 예제 5.12로 보면, $M$ 차원의 $f$를 $A$ 행렬로 미분하면 5.86과 같이 $M \times (M \times N)$의 결과를 얻는다.
-- 5.87)은 partial derivatives의 벡터들을 모아 gradient를 이루게 된다. (5.88)식은 $A$의 하나의 element에 대해서 어떻게 표현되는지 보여준다. 행렬 $A$
-의 element들과 $j$번째 $x$벡터와의 곱으로 표현된다. 특정 $f_i$를 $A_{iq}$로 미분하여 $x_q$라 하고 이는 하나의 행벡터로 partial derivatives가 된다.
 
-<img width="575" alt="스크린샷 2024-07-17 오전 10 28 00" src="https://github.com/user-attachments/assets/1385726c-0078-4f68-92d1-899ac9fb2be7">
-
-<img width="578" alt="스크린샷 2024-07-17 오전 10 28 09" src="https://github.com/user-attachments/assets/53d80b82-42dc-49d3-9394-8f390d6b0d48">
 
 ## 참고자료
 - https://www.youtube.com/watch?v=MDL384gsAk0
