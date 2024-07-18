@@ -176,8 +176,21 @@
 
 <img width="334" alt="스크린샷 2024-07-17 오전 10 25 27" src="https://github.com/user-attachments/assets/8b23a6ac-467e-4712-be24-50d13dfb9bd0">
 
+## 5.5 Useful Identities for Computing Gradients
+- 자주 사용되는 유용한 gradient
 
+<img width="549" alt="스크린샷 2024-07-19 오전 12 28 15" src="https://github.com/user-attachments/assets/efbae57f-da9f-44ec-8733-c26356720eb2">
 
+## 5.6 Backpropagation and Automatic Differentiation
+- 많은 머신러닝 애플리케이션에서 gradient descent를 수행함으로써 좋은 모델 파라미터를 얻는다.
+
+### 5.6.1 Gradients in a Deep Network
+- chain rule이 많이 사용되는 분야는 딥러닝
+- function value $y$가 다양한 레벨의 function composition에서 계산된다.
+
+<img width="557" alt="스크린샷 2024-07-19 오전 12 32 06" src="https://github.com/user-attachments/assets/4f2edf8f-8a19-496a-b2d1-b34076199513">
+
+- 
 ## 참고자료
 - https://www.youtube.com/watch?v=MDL384gsAk0
 - https://data-science-hi.tistory.com/112
