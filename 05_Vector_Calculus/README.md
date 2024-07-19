@@ -184,13 +184,51 @@
 ## 5.6 Backpropagation and Automatic Differentiation
 - 많은 머신러닝 애플리케이션에서 gradient descent를 수행함으로써 좋은 모델 파라미터를 얻는다.
 
+- 함수가 다음과 같이 매우 복잡한 경우라고 해보자.
+  
+  <img width="477" alt="image" src="https://github.com/user-attachments/assets/03898e38-56a2-47a8-9302-32372835dee4">
+
+
+- 이런 계산을 효율적으로 계산하게 도와주는 알고리즘이 Automatic Differentiation이고, 이외의 특별한 경우가 backpropagation 알고리즘이라고 부른다.
+- 
 ### 5.6.1 Gradients in a Deep Network
 - chain rule이 많이 사용되는 분야는 딥러닝
-- function value $y$가 다양한 레벨의 function composition에서 계산된다.
+- deep learning 모델은 최종적인 output이 간단한 연산들의 sequential한 chain으로 표현된다.
+- 많은 function이 결합되어 있는 모델이라고 생각하면 된다.
 
 <img width="557" alt="스크린샷 2024-07-19 오전 12 32 06" src="https://github.com/user-attachments/assets/4f2edf8f-8a19-496a-b2d1-b34076199513">
 
-- 
+- $x$가 $f_1$의 입력이 되어 output 을 내고, 이 output이 다음의 input이 되는 걸 반복하는 composition된 모델이다.
+
+  <img width="469" alt="image" src="https://github.com/user-attachments/assets/66d5c731-396b-43f6-8b90-b770be5fa6cc">
+
+
+- $f_i$가 갖고 있는 parameter는 $j = 0, ..., K-1$, $\theta_j = A_j, b_j$가 주어져 있다.
+- $L$을 loss라 하고 이를 최소화시킬 수 있는 parameter를 GD를 통해 찾는다 하면, gradient 정보를 미분을 통해 찾고, $L$을 줄일 수 있는 방향을 알고, 반대방향으로 이동을 하고, $L$이 줄어들고, 또 다시 gradient를 통해서 방향을 찾아서 loss를 줄여나가는 방식이다.
+- $\theta = {A_0, b_0, ..., A_{K-1}, b_{K-1}}이라할 때, 다음 식을 줄여나가는 방식이다.
+  
+  <img width="473" alt="image" src="https://github.com/user-attachments/assets/651397df-cf0c-4a89-9c31-bef8649ebe0b">
+
+
+
+### 5.6.2 Automatic Differenctiation
+
+#### Example 5.14
+
+
+## 5.7 Higher-Order Derivatives
+
+## 5.8 Linearization and Multivariate Taylor Series
+
+#### Definition 5.7 Multivariate Taylor Series
+
+#### Definition 5.8 Taylor Polynomial
+
+#### Example 5.15 Taylor Series Expansion of a Function with Two Variables
+
+
+## 5.9 Further Reading
+
 ## 참고자료
 - https://www.youtube.com/watch?v=MDL384gsAk0
 - https://data-science-hi.tistory.com/112
@@ -198,3 +236,4 @@
 - https://darkpgmr.tistory.com/59
 - https://jangpiano-science.tistory.com/123
 - https://stevenkim1217.tistory.com/entry/MML-4-Vector-Calculus-4-Gradient-for-Vector-Valued-FunctionJacobian
+- https://data-science-hi.tistory.com/114
