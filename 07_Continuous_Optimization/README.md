@@ -17,3 +17,14 @@
 
 
 ### 7.1.1 Step-size
+step size가 큰 경우 한 번 이동하는 거리가 커지므로 빠르게 수렴할 수 있다는 장점이 있다. 하지만, step size를 너무 크게 설정해버리면 최소값을 계산하도록 수렴하지 못하고 함수 값이 계속 커지는 방향으로 최적화가 진행될 수 있다.
+
+또, 한편 step size가 너무 작은 경우 발산하지는 않을 수 있지만 최적의 $x$를 구하는데 소요되는 시간이 오래 걸린다는 단점이 있다.
+
+아래의 그림을 통해 적절한 step size를 선택하지 못하는 경우 수렴하지 않거나 발산하는 경우를 확인해볼 수 있다.
+
+![image](https://github.com/user-attachments/assets/8d4b1fb2-8740-4038-b481-018766d4740b)
+
+
+## 참고자료
+- https://angeloyeo.github.io/2020/08/16/gradient_descent.html
