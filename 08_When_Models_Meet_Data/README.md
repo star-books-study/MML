@@ -62,9 +62,7 @@
 - 잠재변수 모델은 파라미터로부터 데이터를 생성하는 과정을 정의할 수 있다.
 
 
-## 참고 자료
-- https://savanna.korea.ac.kr/wp/?page_id=1294
-
+---
 
 # 비교: Maximum Likelihood Estimation (MLE), Maximum A Posteriori (MAP), 그리고 Bayesian Inference
 
@@ -73,10 +71,11 @@
 ## 1. Maximum Likelihood Estimation (MLE)
 
 ### 1.1 개요
-- Maximum Likelihood Estimation (MLE)은 주어진 데이터를 가장 잘 설명하는 파라미터 값을 찾는 방법입니다. 즉, 관측된 데이터를 가장 높은 확률로 생성할 수 있는 파라미터를 찾는 것
+- Maximum Likelihood Estimation (MLE)은 주어진 데이터를 가장 잘 설명하는 파라미터 값을 찾는 방법
+- 즉, 관측된 데이터를 가장 높은 확률로 생성할 수 있는 파라미터를 찾는 것
 
 ### 1.2 수학적 정의
-MLE는 다음과 같은 우도(likelihood) 함수를 최대화하는 파라미터 $\theta$를 찾는다.
+- MLE는 다음과 같은 우도(likelihood) 함수를 최대화하는 파라미터 $\theta$를 찾는다.
 
 $$
 \[
@@ -84,7 +83,7 @@ $$
 \]
 $$
 
-우도를 로그 변환한 negative log-likelihood를 최소화하는 방식으로 문제를 풀기도 한다.
+- 우도를 로그 변환한 negative log-likelihood를 최소화하는 방식으로 문제를 풀기도 한다.
 
 $$
 \[
@@ -157,5 +156,9 @@ $$
 
 - MLE, MAP, 그리고 Bayesian Inference는 각기 다른 상황에서 사용될 수 있는 강력한 도구들입니다. MLE는 간단하고 효율적인 방법이지만, 데이터가 부족하거나 노이즈가 많은 상황에서는 MAP나 Bayesian Inference가 더 나은 결과를 제공할 수 있다. 
 
+
+
+## 참고 자료
+- https://savanna.korea.ac.kr/wp/?page_id=1294
 
 
