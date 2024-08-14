@@ -15,8 +15,6 @@
 
 - 이 책에서는 이러한 전처리 과정들이 이미 적절히 이루어졌다고 가정한다.
 
-### 8.1.2 Models as Functions
-
 ### 8.1.3 Models as Probability Distributions
 - Data에는 원초적인 효과로 인해 노이즈가 자주 발생하고, 머신러닝을 학습할 때는 이러한 노이즈 속에서도 특별한 Signal을 발견하는 것이 목적이다.
 - 그러기 위해서는 **노이즈를 수치화**할 수 있어야 한다.
@@ -54,7 +52,7 @@
 
 ### 8.4.2 Bayesian Inference (베이지안 추론)
 - 베이지안 추론은 주어진 데이터에 대한 사전 지식(사전 확률)을 바탕으로, 데이터를 관찰한 후에 **사후 확률**을 계산하는 방법
-- 데이터셋 $\chi$에 대해, parameter prior $p(\theta), 우도 함수, posterior은 베이즈 정리르 통해 아래의 식을 얻을 수 있다.
+- 데이터셋 $\chi$에 대해, parameter prior $p(\theta)$, 우도 함수, posterior은 베이즈 정리르 통해 아래의 식을 얻을 수 있다.
 
 <img width="582" alt="image" src="https://github.com/user-attachments/assets/85c96011-e544-45c6-8b32-b8b4a5ecd0fd">
 
