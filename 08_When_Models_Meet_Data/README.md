@@ -64,3 +64,88 @@
 
 ## 참고 자료
 - https://savanna.korea.ac.kr/wp/?page_id=1294
+
+
+# 비교: Maximum Likelihood Estimation (MLE), Maximum A Posteriori (MAP), 그리고 Bayesian Inference
+
+
+
+## 1. Maximum Likelihood Estimation (MLE)
+
+### 1.1 개요
+Maximum Likelihood Estimation (MLE)은 주어진 데이터를 가장 잘 설명하는 파라미터 값을 찾는 방법입니다. 즉, 관측된 데이터를 가장 높은 확률로 생성할 수 있는 파라미터를 찾는 것입니다.
+
+### 1.2 수학적 정의
+MLE는 다음과 같은 우도(likelihood) 함수를 최대화하는 파라미터 $\theta$를 찾습니다.
+
+\[
+\hat{\theta}_{MLE} = \arg\max_{\theta} \ L(\theta) = \arg\max_{\theta} \ p(\chi|\theta)
+\]
+
+우도를 로그 변환한 negative log-likelihood를 최소화하는 방식으로 문제를 풀기도 합니다.
+
+\[
+\hat{\theta}_{MLE} = \arg\min_{\theta} \left(-\sum_{i=1}^{n} \log p(x_i|\theta)\right)
+\]
+
+### 1.3 장단점
+- **장점**: 계산이 상대적으로 간단하고, 데이터에 기반한 직관적인 추정 방법입니다.
+- **단점**: 사전 정보(prior information)를 고려하지 않으며, 데이터가 적거나 노이즈가 많을 경우 민감하게 반응할 수 있습니다.
+
+## 2. Maximum A Posteriori (MAP)
+
+### 2.1 개요
+Maximum A Posteriori (MAP) 추정은 MLE와 유사하지만, 파라미터에 대한 사전 확률(prior)을 고려하여 더 현실적인 추정을 가능하게 합니다. 베이즈 정리를 사용하여 파라미터의 사후 확률을 최대화하는 방법입니다.
+
+### 2.2 수학적 정의
+MAP는 다음과 같은 식으로 사후 확률을 최대화하는 파라미터 $\theta$를 찾습니다.
+
+\[
+\hat{\theta}_{MAP} = \arg\max_{\theta} \ p(\theta|\chi) = \arg\max_{\theta} \ \left[p(\chi|\theta) \cdot p(\theta)\right]
+\]
+
+이를 로그 변환하여 표현하면,
+
+\[
+\hat{\theta}_{MAP} = \arg\max_{\theta} \left[\log p(\theta) + \log p(\chi|\theta)\right]
+\]
+
+### 2.3 장단점
+- **장점**: 사전 지식을 반영할 수 있어, 데이터가 적거나 불확실할 때 더 안정적인 추정을 할 수 있습니다.
+- **단점**: 사전 확률을 선택하는 것이 어려울 수 있으며, 잘못된 사전 확률은 잘못된 추정을 초래할 수 있습니다.
+
+## 3. Bayesian Inference
+
+### 3.1 개요
+Bayesian Inference는 관측된 데이터를 바탕으로 파라미터의 사후 확률 분포를 계산하는 방법입니다. MLE와 MAP가 단일 추정치를 제공하는 반면, Bayesian Inference는 파라미터의 모든 가능한 값을 확률적으로 표현합니다.
+
+### 3.2 수학적 정의
+Bayesian Inference는 다음의 베이즈 정리를 기반으로 합니다.
+
+\[
+p(\theta|\chi) = \frac{p(\chi|\theta) \cdot p(\theta)}{p(\chi)}
+\]
+
+여기서 $p(\theta|\chi)$는 사후 확률, $p(\chi|\theta)$는 우도, $p(\theta)$는 사전 확률, 그리고 $p(\chi)$는 evidence입니다.
+
+### 3.3 장단점
+- **장점**: 불확실성을 포함한 파라미터 추정을 가능하게 하며, 새로운 데이터가 들어올 때마다 사후 확률을 업데이트할 수 있습니다.
+- **단점**: 계산이 복잡하고, 특히 고차원 문제에서는 계산 비용이 매우 높을 수 있습니다.
+
+## 4. MLE, MAP, 그리고 Bayesian Inference의 비교
+
+| **특징** | **MLE** | **MAP** | **Bayesian Inference** |
+|----------|---------|---------|------------------------|
+| **사전 확률 고려** | 없음 | 있음 | 있음 |
+| **파라미터 추정** | 단일 값 | 단일 값 | 확률 분포 |
+| **복잡도** | 낮음 | 중간 | 높음 |
+| **데이터 요구량** | 많음 | 적음 | 다양함 |
+| **불확실성 표현** | 없음 | 제한적 | 있음 |
+
+
+## 결론
+
+MLE, MAP, 그리고 Bayesian Inference는 각기 다른 상황에서 사용될 수 있는 강력한 도구들입니다. MLE는 간단하고 효율적인 방법이지만, 데이터가 부족하거나 노이즈가 많은 상황에서는 MAP나 Bayesian Inference가 더 나은 결과를 제공할 수 있습니다. 모델링 상황과 목적에 따라 적절한 방법을 선택하는 것이 중요합니다.
+
+
+
