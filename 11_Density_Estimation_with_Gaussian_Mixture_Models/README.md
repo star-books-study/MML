@@ -40,6 +40,23 @@
 - 로그 우도 함수는 위로 볼록한 형태를 가지므로, 이 함수를 $\mu_k$, $\Sigma_k$, $\pi_k$에 대해 미분하고, 미분값이 0이 되는 점을 찾아 maximization 문제를 해결할 수 있다.
 <img width="543" alt="image" src="https://github.com/user-attachments/assets/f55d40a5-e90d-46bc-a1e8-529df504a633">
 
+## 11.3 EM Algorithm
+- GMM에서의 모수는 두 가지 종류가 있다.
+  1. 3가지 정규분포 중 확률적으로 어디에서 속해있는가를 나타내는 Weight 값
+  2. 각각의 정규분포의 모수(평균, 분산)
+- 첫 번째 종류의 모수를 잠재 변수라고 부르며, 잠재변수가 포함된 모델은 Mixture Model에서의 모수 추정은 MLE로 구할 수 없기 때문에 EM(Expectation Maximazation)이라고 부르는 알고리즘을 통해 iterative하게 구하게 된다.
+- 왜냐하면 잠재변수가 포함되었기 때문에 likelihood function을 미분할 수가 없기 때문
+
+// TODO : EM 알고리즘 정리
+## 11.4 Latent-Variable Perspective
+
+### 11.4.1 Generative Process and Probabilistic Model
+
+### 11.4.2 Likelihood
+
+### 11.4.3 Posterior Distribution
+
+### 11.4.5 EM Algorithm Revisited
 
 ## 참고자료
 - https://untitledtblog.tistory.com/133
