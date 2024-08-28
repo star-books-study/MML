@@ -42,21 +42,12 @@
 
 ## 11.3 EM Algorithm
 
-### EM 알고리즘은 언제 사용할 수 있을까
-- EM 알고리즘은 결국 앞서 다루었던 우도 함수(likelihood function)를 최대화 시키는 모수를 찾는 방법, 즉 MLE를 찾는 방법 중 하나이다.
-![image](https://github.com/user-attachments/assets/241b2a82-1f58-46f2-b3b1-df18402ae1e7)
-- 우리가 전에 살펴보았던 로그우도 함수를 직접 최대화하기 힘든 경우가 많다. 이럴 경우 하나의 대안책으로 EM 알고리즘을 사용할 수 있다.
-- 알고리즘을 적용할 수 있는 조건은 다음과 같다.
-  1. 우리가 관찰하는 확률 변수 $Y$가 우리가 잘 알고 있으며 같은 모수를 사용하는 좀 더 단순한 확률 변수 $X ~ p_\theta(x)$로부터 나왔다고 볼 수 있는 경우, 즉 $Y = T(X)$ 같은 어떤 함수 T를 만들 수 있는 경우
-  2. 확률 변수 $X$를 사용한 우도 함수의 최대화를 $Y$를 사용하는 위의 경우보다 비교적 쉽게 할 수 있는 경우
-- 우리가 풀려고 하는 문제가 위의 두 가지 조건을 만족할 때 EM 알고리즘은 다음과 같은 방법을 사용하여 모수 $\theta$를 추정할 수 있다.
-
 ### EM 알고리즘
 - EM 알고리즘은 Latent 변수를 도입하여 최대 우도 추정량을 구하는 방법
   - Latent 변수 : 실제로 관측이 되지 않았지만 관측된 데이터에 상호 영향을 미치리라 판단되는 변수
-- EM 알고리즘을 정의하기 위해 필요한 재료는 실제로 관측된 데이터 $\chi$, Latent 변수 데이터 $Z$ 그리고 최대 우도 추정법으로 추정해야 할 파라미터 $\theta$인 것을 짐작할 수 있다.
-- EM 알고리즘은 $\theta$를 함수 형태의 한방에 구하는 알고리즘이 아니다. 주어진 $\theta$를 이용하여 업데이트 해나가야 하는 Iterative 알고리즘
-- 따라서 EM 알고리즘을 정의하는 데 $\theta$의 현재 추정값 $\theta$이 추가적으로 필요하다.
+- EM 알고리즘을 정의하기 위해 필요한 재료는 실제로 관측된 데이터 $\chi$, Latent 변수 데이터 $Z$ 그리고 최대 우도 추정법으로 추정해야 할 파라미터 $\theta$
+- EM 알고리즘은 $\theta$를 수학적인 테크닉을 통해 한방에 구하는 알고리즘이 아니다. 주어진 $\theta$를 이용하여 업데이트 해나가야 하는 Iterative 알고리즘
+- 따라서 EM 알고리즘을 정의하는 데 $\theta$의 현재 추정값 $\theta^*$이 추가적으로 필요하다.
 
 - 보통 최대 우도 추정량을 구하기 위해 다음과 같은 로그 우도 함수를 생각한다.
   <img width="578" alt="스크린샷 2024-08-28 오후 7 31 39" src="https://github.com/user-attachments/assets/fbed76ae-1cc6-47cd-ad9d-8be1864d8ac8">
@@ -71,26 +62,30 @@
   
 <img width="734" alt="스크린샷 2024-08-28 오후 7 35 16" src="https://github.com/user-attachments/assets/5b36350e-6645-4a62-987f-4091ad0bf94f">
 
-- 이 등식은 $l(\theata ; x)$가 $z$와 관계 없고 함수의 적분 값은 1이기 때문에 성립한다.
-- 이제 이 식을 통하여 $l(\theta ; x)$를 최대화하는 것은 $Q(\theta|theta*) + H(\theta|\theta*)$화하는 문제와 같아진다.
-- 이 때 EM 알고리즘은 $\theta*$가 주어진 상황에서 $Q(\theta|\theta*)$를 최대화하는 $\theta$를 찾는다.
-  - 왜냐하면 $Q$를 최대화하는 것이 $l(\theata ; x)$을 최대화하는 것보다 일반적으로 쉽기 때문이다.
+- 이 등식은 $l(\theta ; x)$가 $z$와 관계 없고 함수의 적분 값은 1이기 때문에 성립한다.
+- 이제 이 식을 통하여 $l(\theta ; x)$를 최대화하는 것은 $Q(\theta|\theta^*) + H(\theta|\theta^*)$화하는 문제와 같아진다.
+- 이 때 EM 알고리즘은 $\theta^*$가 주어진 상황에서 $Q(\theta|\theta^*)$를 최대화하는 $\theta$를 찾는다.
+  - 왜냐하면 $Q$를 최대화하는 것이 $l(\theta ; x)$을 최대화하는 것보다 일반적으로 쉽기 때문이다.
 - Q를 최대화 하는 $\theta$는 $l(\theta ; x)$를 최대화 하는 $\theta$와 같지는 않다. 그렇다면 EM 알고리즘을 왜 사용하는가?
 - 왜냐하면 $l(\theta ; x)$를 최대화하는 $\theta$를 찾는데 도움이 되기 때문이다.
 - 위 식에서 $\theta$ 대신 $\theta^*$을 넣으면 다음과 같이 된다.
 <img width="556" alt="스크린샷 2024-08-28 오후 7 52 57" src="https://github.com/user-attachments/assets/86f8e588-993e-41b5-a69c-8d9bed833282">
 - 이제 처음 식에서 이 식을 빼준다.
   <img width="652" alt="스크린샷 2024-08-28 오후 7 53 18" src="https://github.com/user-attachments/assets/8f8504f9-c458-467a-ad1a-b0fd3cb329f6">
-- 여기서 $H(\theta | \theta^*)$을 살펴보자.
+- 여기서 $H(\theta|\theta^*)$을 살펴보자.
   <img width="796" alt="스크린샷 2024-08-28 오후 7 53 53" src="https://github.com/user-attachments/assets/c2fe3c4a-fe58-49c9-a468-cad1eda844c3">
 
 ### EM 알고리즘 정의
 1. 파라미터 초기값 $\theta^{(0)}$을 설정한다.
 2. $\theta^{(0)}$에 대하여 다음을 계산한다.
    <img width="619" alt="image" src="https://github.com/user-attachments/assets/870988d0-0e54-434c-99df-a449c670fe23">
-3. $Q(\theta | \thet^{(t)})$을 최대화하는  $\theta^{(t+1)}$을 찾는다. 즉,
+   - 이 단계는 조건부 기대값을 구하는 과정이라 볼 수 있어 Expectation Step이라고 한다.
+3. $Q(\theta | \theta^{(t)})$을 최대화하는  $\theta^{(t+1)}$을 찾는다. 즉,
    <img width="548" alt="스크린샷 2024-08-28 오후 7 57 20" src="https://github.com/user-attachments/assets/5bba49e2-46e6-423d-95a1-aceac0710eef">
-4. 수렴할 때까지 단계 2) ~ 단계 3)을 반복한다.
+  - 이 단계는 $Q$를 최대화한다는 의미에서 Maximization Step이라고 한다.
+4. 수렴할 때까지 단계 2 ~ 단계 3을 반복한다.
+
+- E 단계에서는 결국에는 Q를 지정해서 부등식을 등식으로 하여 Lower bound를 tight 하게 만들고, M-step에서는 다시 금 해당 로그 가능도의 Θ를 바탕으로 최대화 시켜서 새로운 공간으로 이동시키는 것이다. 이걸 수렴할 때 까지 반복한다. 
 
 ## 참고자료
 - https://untitledtblog.tistory.com/133
@@ -98,3 +93,4 @@
 - https://sanghyu.tistory.com/16
 - https://3months.tistory.com/154
 - https://zephyrus1111.tistory.com/89
+- https://m.blog.naver.com/sw4r/221428818089
