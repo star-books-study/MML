@@ -41,25 +41,60 @@
 <img width="543" alt="image" src="https://github.com/user-attachments/assets/f55d40a5-e90d-46bc-a1e8-529df504a633">
 
 ## 11.3 EM Algorithm
-- GMM에서의 모수는 두 가지 종류가 있다.
-  1. 3가지 정규분포 중 확률적으로 어디에서 속해있는가를 나타내는 Weight 값
-  2. 각각의 정규분포의 모수(평균, 분산)
-- 첫 번째 종류의 모수를 잠재 변수라고 부르며, 잠재변수가 포함된 모델은 Mixture Model에서의 모수 추정은 MLE로 구할 수 없기 때문에 EM(Expectation Maximazation)이라고 부르는 알고리즘을 통해 iterative하게 구하게 된다.
-- 왜냐하면 잠재변수가 포함되었기 때문에 likelihood function을 미분할 수가 없기 때문
 
-// TODO : EM 알고리즘 정리
-## 11.4 Latent-Variable Perspective
+### EM 알고리즘은 언제 사용할 수 있을까
+- EM 알고리즘은 결국 앞서 다루었던 우도 함수(likelihood function)를 최대화 시키는 모수를 찾는 방법, 즉 MLE를 찾는 방법 중 하나이다.
+![image](https://github.com/user-attachments/assets/241b2a82-1f58-46f2-b3b1-df18402ae1e7)
+- 우리가 전에 살펴보았던 로그우도 함수를 직접 최대화하기 힘든 경우가 많다. 이럴 경우 하나의 대안책으로 EM 알고리즘을 사용할 수 있다.
+- 알고리즘을 적용할 수 있는 조건은 다음과 같다.
+  1. 우리가 관찰하는 확률 변수 $Y$가 우리가 잘 알고 있으며 같은 모수를 사용하는 좀 더 단순한 확률 변수 $X ~ p_\theta(x)$로부터 나왔다고 볼 수 있는 경우, 즉 $Y = T(X)$ 같은 어떤 함수 T를 만들 수 있는 경우
+  2. 확률 변수 $X$를 사용한 우도 함수의 최대화를 $Y$를 사용하는 위의 경우보다 비교적 쉽게 할 수 있는 경우
+- 우리가 풀려고 하는 문제가 위의 두 가지 조건을 만족할 때 EM 알고리즘은 다음과 같은 방법을 사용하여 모수 $\theta$를 추정할 수 있다.
 
-### 11.4.1 Generative Process and Probabilistic Model
+### EM 알고리즘
+- EM 알고리즘은 Latent 변수를 도입하여 최대 우도 추정량을 구하는 방법
+  - Latent 변수 : 실제로 관측이 되지 않았지만 관측된 데이터에 상호 영향을 미치리라 판단되는 변수
+- EM 알고리즘을 정의하기 위해 필요한 재료는 실제로 관측된 데이터 $\chi$, Latent 변수 데이터 $Z$ 그리고 최대 우도 추정법으로 추정해야 할 파라미터 $\theta$인 것을 짐작할 수 있다.
+- EM 알고리즘은 $\theta$를 함수 형태의 한방에 구하는 알고리즘이 아니다. 주어진 $\theta$를 이용하여 업데이트 해나가야 하는 Iterative 알고리즘
+- 따라서 EM 알고리즘을 정의하는 데 $\theta$의 현재 추정값 $\theta$이 추가적으로 필요하다.
 
-### 11.4.2 Likelihood
+- 보통 최대 우도 추정량을 구하기 위해 다음과 같은 로그 우도 함수를 생각한다.
+  <img width="578" alt="스크린샷 2024-08-28 오후 7 31 39" src="https://github.com/user-attachments/assets/fbed76ae-1cc6-47cd-ad9d-8be1864d8ac8">
 
-### 11.4.3 Posterior Distribution
+- 여기서 $x$는 $\theta$의 관측값, $f_{\theta}(x)$는 $\chi$의 확률 밀도 함수다.
+- 이 때 로그 우도 함수를 최대화하는 $\theta$를 찾는 것이 최대 우도 추정법이다.
+- 그런데 여기에 Latent 변수 $Z$를 도입한다고 하였다. 근데 $Z$는 관측된 것이 아니므로 로그 우도 함수에 직접적으로 끼워줄 수가 없다. 따라서 다음의 식을 이용한다.
+  <img width="554" alt="스크린샷 2024-08-28 오후 7 33 51" src="https://github.com/user-attachments/assets/8a530a5e-4df7-4f7a-b2d6-b8f53baa82a9">
+- 위 식 양변에 로그를 취해주자
+  <img width="596" alt="스크린샷 2024-08-28 오후 7 34 19" src="https://github.com/user-attachments/assets/d0e05a5b-159f-466e-9eff-f2c87b1f1076">
+- 그리고 파라미터 추정값 $\theta$에 의존하는 $Z$의 조건부 확률 밀도 함수 $f_{Z|X,\theta*}(z)$를 양변에 곱한 다음 $z$에 대해 적분을 취해주자.
+  
+<img width="734" alt="스크린샷 2024-08-28 오후 7 35 16" src="https://github.com/user-attachments/assets/5b36350e-6645-4a62-987f-4091ad0bf94f">
 
-### 11.4.5 EM Algorithm Revisited
+- 이 등식은 $l(\theata ; x)$가 $z$와 관계 없고 함수의 적분 값은 1이기 때문에 성립한다.
+- 이제 이 식을 통하여 $l(\theta ; x)$를 최대화하는 것은 $Q(\theta|theta*) + H(\theta|\theta*)$화하는 문제와 같아진다.
+- 이 때 EM 알고리즘은 $\theta*$가 주어진 상황에서 $Q(\theta|\theta*)$를 최대화하는 $\theta$를 찾는다.
+  - 왜냐하면 $Q$를 최대화하는 것이 $l(\theata ; x)$을 최대화하는 것보다 일반적으로 쉽기 때문이다.
+- Q를 최대화 하는 $\theta$는 $l(\theta ; x)$를 최대화 하는 $\theta$와 같지는 않다. 그렇다면 EM 알고리즘을 왜 사용하는가?
+- 왜냐하면 $l(\theta ; x)$를 최대화하는 $\theta$를 찾는데 도움이 되기 때문이다.
+- 위 식에서 $\theta$ 대신 $\theta^*$을 넣으면 다음과 같이 된다.
+<img width="556" alt="스크린샷 2024-08-28 오후 7 52 57" src="https://github.com/user-attachments/assets/86f8e588-993e-41b5-a69c-8d9bed833282">
+- 이제 처음 식에서 이 식을 빼준다.
+  <img width="652" alt="스크린샷 2024-08-28 오후 7 53 18" src="https://github.com/user-attachments/assets/8f8504f9-c458-467a-ad1a-b0fd3cb329f6">
+- 여기서 $H(\theta | \theta^*)$을 살펴보자.
+  <img width="796" alt="스크린샷 2024-08-28 오후 7 53 53" src="https://github.com/user-attachments/assets/c2fe3c4a-fe58-49c9-a468-cad1eda844c3">
+
+### EM 알고리즘 정의
+1. 파라미터 초기값 $\theta^{(0)}$을 설정한다.
+2. $\theta^{(0)}$에 대하여 다음을 계산한다.
+   <img width="619" alt="image" src="https://github.com/user-attachments/assets/870988d0-0e54-434c-99df-a449c670fe23">
+3. $Q(\theta | \thet^{(t)})$을 최대화하는  $\theta^{(t+1)}$을 찾는다. 즉,
+   <img width="548" alt="스크린샷 2024-08-28 오후 7 57 20" src="https://github.com/user-attachments/assets/5bba49e2-46e6-423d-95a1-aceac0710eef">
+4. 수렴할 때까지 단계 2) ~ 단계 3)을 반복한다.
 
 ## 참고자료
 - https://untitledtblog.tistory.com/133
 - https://yeong-jin-data-blog.tistory.com/entry/GMM-Gaussian-Mixture-Models
 - https://sanghyu.tistory.com/16
-- https://3months.tistory.com/154 -> 모수 추정은 MLE로 구할 수 없어 EM을 사용 (EM 알고리즘 공부 시 다시 보기)
+- https://3months.tistory.com/154
+- https://zephyrus1111.tistory.com/89
